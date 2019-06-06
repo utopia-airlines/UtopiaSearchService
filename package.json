@@ -1,0 +1,24 @@
+{
+  "name": "utopia-search-service",
+  "version": "1.0.0",
+  "description": "Run a variety of queries on a given database",
+  "main": "index.js",
+  "dependencies" : {
+    "mysql" : "^2.17.1",
+    "express" : "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STOzaki/UtopiaSearchService.git"
+  },
+  "keywords": [],
+  "author": "Salem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STOzaki/UtopiaSearchService/issues"
+  },
+  "homepage": "https://github.com/STOzaki/UtopiaSearchService#readme"
+}
