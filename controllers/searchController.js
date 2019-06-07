@@ -9,7 +9,7 @@ routes.get('/', function(req, res) {
     searchDao.getAll(filter, function(error, result) {
         if(error) {
             console.log(error);
-            res.status(500).send("Sorry, but something happend on our server!");
+            res.status(500).send('Sorry, but something happend on our server!');
         } else {
             res.setHeader('Content-Type', 'application/json');
             res.send(result);
