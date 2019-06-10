@@ -59,6 +59,3 @@ typings/
 
 # next.js build output
 .next
-
-# database connection configuration
-resources/config.json
