@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Run a variety of queries on a given database",
   "main": "index.js",
-  "dependencies" : {
-    "mysql" : "^2.17.1",
-    "express" : "^4.17.1",
+  "dependencies": {
+    "mysql": "^2.17.1",
+    "express": "^4.17.1",
     "body-parser": "^1.18.2"
   },
   "scripts": {
