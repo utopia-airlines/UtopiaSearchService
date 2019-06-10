@@ -7,8 +7,5 @@ exports.getAll = function(filter, cb) {
     }
     let sqlQuery = 'SELECT * FROM tbl_tickets WHERE reserver IS NULL' + classFilter + ';';
     // filter out reserver by default because we want tickets that have not been taken yet
-    db.query(sqlQuery,
-    function(err, result) {
-        cb(err, result);
-    });
+    db.query(sqlQuery,cb);
 };
