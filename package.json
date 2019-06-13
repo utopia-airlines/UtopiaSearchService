@@ -9,9 +9,17 @@
     "body-parser": "^1.18.2",
     "dotenv": "^8.0.0"
   },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "better-sqlite3": "^5.4.0",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
+  },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha --timeout 10000 --require @babel/register 'test/**/**Spec.js'"
   },
   "repository": {
     "type": "git",
