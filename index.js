@@ -12,3 +12,5 @@ app.use(require('./controllers/searchController'));
 
 app.listen(8080);
 console.log('Server running in port: 8080 ...');
+
+module.exports = app;
