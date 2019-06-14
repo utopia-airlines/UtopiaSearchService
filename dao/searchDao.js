@@ -1,6 +1,6 @@
 const db = require('./db');
 let sqliteDatabase;
-if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3')};
+if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3');}
 
 exports.getAll = function(filter, cb) {
     let classFilter = '';
