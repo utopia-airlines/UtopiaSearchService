@@ -27,8 +27,25 @@ exports.getAll = function(filter, cb) {
         }
         seatFilter = ' AND seat IN (' + sqlSeatList + ')';
     }
-    let sqlQuery = 'SELECT * FROM tbl_tickets WHERE reserver IS NULL' + classFilter +
-        seatFilter + ';';
+
+    let departureDateFilter = '';
+    let departureDateAfter = '\'0000-00-00 00:00:00\'';
+    let departureDateBefore = '\'9999-12-31 23:59:59\'';
+    if(filter.departure_date_after) {
+        departureDateAfter = db.escape(filter.departure_date_after);
+    }
+
+    if(filter.departure_date_before) {
+        departureDateBefore = db.escape(filter.departure_date_before);
+    }
+
+    if(filter.departure_date_after || filter.departure_date_before) {
+        departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter +
+        ' AND ' + departureDateBefore;
+    }
+
+    let sqlQuery = 'SELECT flight, seat_row, seat, class, reserver, price, reservation_timeout, booking_id, departure, destination, departure_date, arrival_date, flight_number FROM tbl_tickets AS t LEFT JOIN tbl_flights AS f ON t.flight = f.id WHERE reserver IS NULL' + classFilter +
+        seatFilter + departureDateFilter + ';';
 
     if(process.env.NODE_ENV === 'test') {
         // Please look at the README for debugging to the console

@@ -97,4 +97,45 @@ describe('All with queries', () => {
             });
         });
     });
+    /*
+    * Test the /GET route with departure date filter
+    */
+    describe('/GET all with departure date query parameters', () => {
+        it('should GET a list tickets with departure date between 2038-01-11 00:00:00 and 2038-01-12 00:00:00', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_date_after: '2038-01-11 00:00:00',
+                        departure_date_before: '2038-01-12 00:00:00'}) // /?departure_date_after=2038-01-06&departure_date_before=2038-01-20
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(2);
+                done();
+            });
+        });
+
+        it('should GET a list tickets with departure date between a non given datetime and 2038-01-12 00:00:00', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_date_before: '2038-01-12 00:00:00'}) // /?departure_date_after=2038-01-06&departure_date_before=2038-01-20
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(8);
+                done();
+            });
+        });
+
+        it('should GET a list tickets with departure date between 2038-01-11 00:00:00 and a non given datetime', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_date_after: '2038-01-11 00:00:00'}) // /?departure_date_after=2038-01-06&departure_date_before=2038-01-20
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(10);
+                done();
+            });
+        });
+    });
 });
