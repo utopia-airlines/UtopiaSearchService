@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 //Our parent block
 describe('All', () => {
     before((done) => {
-        // for debugging add `verbose: console.log` to the object being passed in eg. {verbose: console.log, memory: true} (also look at the README)
+        // Please look at the README for debugging to the console
         const Testdb = new sqliteDatabase('airlinesTest.db', {memory: true});
         Testdb.prepare('CREATE TABLE `tbl_airports` (`code` char(3) NOT NULL,`name` varchar(45) NOT NULL,PRIMARY KEY (`code`),UNIQUE (`code`));').run();
 
@@ -56,7 +56,6 @@ describe('All', () => {
             chai.request(server)
                 .get('/')
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     res.body.length.should.be.eql(8);
@@ -69,7 +68,6 @@ describe('All', () => {
                 .get('/')
                 .query({class: '1'}) // /search?class=1
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     res.body.length.should.be.eql(3);
@@ -82,7 +80,6 @@ describe('All', () => {
                 .get('/')
                 .query({class: 'j'}) // /search?class=1
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                     res.body.length.should.be.eql(0);
