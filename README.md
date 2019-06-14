@@ -16,6 +16,6 @@ sqliteDatabase() located in `searchDao.js`, AND all `Spec js` files in the test 
 
 ## Issues
 
-**NOTE**, you should not have to run `npm install --verbose`, but if you do you may run into 
-this error with installing `better-sqlite3`. If so, you may need to run this command
-`npm i better-sqlite3 --save-dev` (I am not sure about the dev part)
+-   You should not have to run `npm install --verbose`, but if you do you may run into this
+    error with installing `better-sqlite3`. If so, you may need to run this command
+    `npm i better-sqlite3 --save-dev` (I am not sure about the dev part)
