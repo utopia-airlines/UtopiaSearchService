@@ -31,15 +31,15 @@ exports.getAll = function(filter, cb) {
     let departureDateFilter = '';
     let departureDateAfter = '\'0000-00-00 00:00:00\'';
     let departureDateBefore = '\'9999-12-31 23:59:59\'';
-    if(filter.departure_date_after) {
-        departureDateAfter = db.escape(filter.departure_date_after);
+    if(filter.departureDateAfter) {
+        departureDateAfter = db.escape(filter.departureDateAfter);
     }
 
-    if(filter.departure_date_before) {
-        departureDateBefore = db.escape(filter.departure_date_before);
+    if(filter.departureDateBefore) {
+        departureDateBefore = db.escape(filter.departureDateBefore);
     }
 
-    if(filter.departure_date_after || filter.departure_date_before) {
+    if(filter.departureDateAfter || filter.departureDateBefore) {
         departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter +
         ' AND ' + departureDateBefore;
     }
