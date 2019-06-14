@@ -11,7 +11,7 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 //Our parent block
-describe('All', () => {
+describe('All with queries', () => {
     before((done) => {
         // Please look at the README for debugging to the console
         const Testdb = new sqliteDatabase('airlinesTest.db', {memory: true});
@@ -51,9 +51,9 @@ describe('All', () => {
         done();
     });
     /*
-    * Test the /GET route
+    * Test the /GET route with class filter
     */
-    describe('/GET all with query optional query parameters', () => {
+    describe('/GET all with class query parameters', () => {
         it('should GET all tickets that are not reserved', (done) => {
             chai.request(server)
                 .get('/')
@@ -68,7 +68,7 @@ describe('All', () => {
         it('should GET a list of first class tickets', (done) => {
             chai.request(server)
                 .get('/')
-                .query({class: '1'}) // /search?class=1
+                .query({class: '1'}) // /?class=1
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
@@ -80,7 +80,7 @@ describe('All', () => {
         it('should GET nothing because the input is incorrect (TODO: change this so it returns 400 for bad request', (done) => {
             chai.request(server)
                 .get('/')
-                .query({class: 'j'}) // /search?class=1
+                .query({class: 'j'}) // /?class=1
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
