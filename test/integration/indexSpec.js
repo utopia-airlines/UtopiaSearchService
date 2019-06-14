@@ -42,15 +42,9 @@ describe('All', () => {
         // function indecating that this is function has finished
         done();
     });
-    // beforeEach((done) => {
-        //Before each test we empty the database
-        // let sqlQuery = 'DELETE FROM employees;';
-        // filter out reserver by default because we want tickets that have not been taken yet
-        // db.query(sqlQuery,cb);
-    // });
-/*
-  * Test the /GET route
-  */
+    /*
+    * Test the /GET route
+    */
     describe('/GET all with query optional query parameters', () => {
         it('should GET all tickets that are not reserved', (done) => {
             chai.request(server)
