@@ -219,4 +219,44 @@ describe('All with queries', () => {
             });
         });
     });
+    /*
+    * Test the /GET route with destination_location filter
+    */
+    describe('/GET all with destination_location query parameters', () => {
+        it('should GET a list of "FSE" departure location tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({destination_location: 'FSE'}) // /?destination_location=FSE
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(8);
+                done();
+            });
+        });
+
+        it('should GET a list of "FSE" and "CAR" departure location tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({destination_location: 'FSE,CAR'}) // /?destination_location=FSE,CAR
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(10);
+                done();
+            });
+        });
+
+        it('should GET nothing because the input is incorrect (TODO: change this so it returns 400 for bad request', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({destination_location: 'Nothing'}) // /?destination_location=Nothing
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(0);
+                done();
+            });
+        });
+    });
 });
