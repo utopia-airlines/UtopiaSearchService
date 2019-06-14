@@ -39,13 +39,21 @@ describe('All with queries', () => {
 
         Testdb.prepare('INSERT INTO `tbl_users` (`username`, `role`) VALUES ("user", "1");').run();
 
-        Testdb.prepare('INSERT INTO `tbl_airports` (`code`, `name`) VALUES ("DSA", "test"),("FSE", "test2");').run();
+        Testdb.prepare('INSERT INTO `tbl_airports` (`code`, `name`) VALUES ' +
+            '("DSA", "test"),("FSE", "test2"), ("TWS", "test3"),' +
+            '("TQI", "test4"), ("TUB", "test5"), ("CAR", "test6");').run();
 
-        Testdb.prepare('INSERT INTO `tbl_flights` (`departure`, `destination`, `departure_date`, `arrival_date`, `flight_number`) VALUES ("DSA", "FSE", "2038-01-19 03:14:07", "2038-01-20 03:14:07", "154681");').run();
+        Testdb.prepare('INSERT INTO `tbl_flights` (`departure`, `destination`, `departure_date`, `arrival_date`, `flight_number`) VALUES ' + 
+            '("DSA", "FSE", "2038-01-19 03:14:07", "2038-01-20 03:14:07", "154681"),' +
+            '("TWS", "TQI", "2038-01-10 04:16:07", "2038-01-15 04:16:07", "154281"),' +
+            '("TUB", "CAR", "2038-01-11 06:20:10", "2038-01-15 06:20:10", "155781");').run();
 
         // one ticket that has been reserved
         Testdb.prepare('INSERT INTO `tbl_tickets` (`flight`, `seat_row`, `seat`, `class`, `reserver`, `price`, `booking_id`) VALUES ("1", "1", "A", "1", "1", "123", "fjsl35h");').run();
-        Testdb.prepare('INSERT INTO `tbl_tickets` (`flight`, `seat_row`, `seat`, `class`) VALUES ("1", "2", "A", "1"),("1", "2", "B", "1"),("1", "2", "C", "1"),("1", "8", "A", "2"),("1", "8", "B", "2"),("1", "13", "A", "3"),("1", "13", "B", "3"),("1", "16", "A", "3");').run();
+        Testdb.prepare('INSERT INTO `tbl_tickets` (`flight`, `seat_row`, `seat`, `class`) VALUES ' +
+        '("1", "2", "A", "1"),("1", "2", "B", "1"),("1", "2", "C", "1"),("1", "8", "A", "2"),("1", "8", "B", "2"),' +
+        '("1", "13", "A", "3"),("1", "13", "B", "3"),("1", "16", "A", "3"),("2", "2", "A", "1"),("2", "2", "C", "1"),' +
+        '("2", "8", "A", "2"),("2", "13", "A", "3"),("2", "13", "B", "3"),("2", "16", "A", "3"),("3", "2", "B", "1"),("3", "8", "B", "2");').run();
 
         // function indecating that this is function has finished
         done();
@@ -60,7 +68,7 @@ describe('All with queries', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.length.should.be.eql(8);
+                    res.body.length.should.be.eql(16);
                 done();
             });
         });
@@ -72,7 +80,7 @@ describe('All with queries', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.length.should.be.eql(3);
+                    res.body.length.should.be.eql(6);
                 done();
             });
         });
@@ -100,7 +108,7 @@ describe('All with queries', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.length.should.be.eql(4);
+                    res.body.length.should.be.eql(8);
                 done();
             });
         });
@@ -112,7 +120,7 @@ describe('All with queries', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.length.should.be.eql(7);
+                    res.body.length.should.be.eql(14);
                 done();
             });
         });
