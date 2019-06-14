@@ -138,4 +138,45 @@ describe('All with queries', () => {
             });
         });
     });
+    /*
+    * Test the /GET route with arrival date filter
+    */
+    describe('/GET all with arrival date query parameters', () => {
+        it('should GET a list tickets with arrival date between 2038-01-16 00:00:00 and 2038-01-21 00:00:00', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({arrivalDateAfter: '2038-01-16 00:00:00',
+                        arrivalDateBefore: '2038-01-21 00:00:00'}) // /?arrivalDateAfter=2038-01-16&arrivalDateBefore=2038-01-21
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(8);
+                done();
+            });
+        });
+
+        it('should GET a list tickets with arrival date between a non given datetime and 2038-01-16 00:00:00', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({arrivalDateBefore: '2038-01-16 00:00:00'}) // /?arrivalDateBefore=2038-01-16
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(8);
+                done();
+            });
+        });
+
+        it('should GET a list tickets with arrival date between 2038-01-16 00:00:00 and a non given datetime', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({arrivalDateAfter: '2038-01-16 00:00:00'}) // /?arrivalDateAfter=2038-01-16
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(8);
+                done();
+            });
+        });
+    });
 });
