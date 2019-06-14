@@ -89,4 +89,44 @@ describe('All with queries', () => {
             });
         });
     });
+    /*
+    * Test the /GET route with seat filter
+    */
+    describe('/GET all with seat query parameters', () => {
+        it('should GET a list of "A" seats tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({seat: 'A'}) // /?seat=A
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(4);
+                done();
+            });
+        });
+
+        it('should GET a list of "A" and "B" seats tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({seat: 'A,B'}) // /?seat=A,B
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(7);
+                done();
+            });
+        });
+
+        it('should GET nothing because the input is incorrect (TODO: change this so it returns 400 for bad request', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({seat: 'Nothing'}) // /?seat=Nothing
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(0);
+                done();
+            });
+        });
+    });
 });
