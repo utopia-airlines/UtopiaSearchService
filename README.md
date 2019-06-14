@@ -9,7 +9,7 @@ This microservice will be used by our main APIs to handle searching.
 ## Tests
 
 Run `npm test`
-**NOTE:** For debugging errors with SQL queries, please add this code `verbose: console.log` to the following object (`{memory: true}`) being passed in as a parameter for new sqliteDatabase() located in `searchDao.js`, AND all **Spec js files in the test directory.
+**NOTE:** For debugging errors with SQL queries, please add this code `verbose: console.log` to the following object (`{memory: true}`) being passed in as a parameter for new sqliteDatabase() located in `searchDao.js`, AND all `Spec js` files in the test directory.
 
 ## Issues
 
