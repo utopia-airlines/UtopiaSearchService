@@ -60,8 +60,28 @@ exports.getAll = function(filter, cb) {
         ' AND ' + arrivalDateBefore;
     }
 
+    // filter to be used on sql query
+    let departureLocationFilter = '';
+    let departureLocationArray = null;
+    // still in string form after getting passed as a query parameter
+    // if there is something the departure_location object
+    if(filter.departure_location) {departureLocationArray = filter.departure_location.split(',');}
+
+    if(Array.isArray(departureLocationArray)) {
+        let i;
+        let departureLocationLength = departureLocationArray.length;
+        let sqldepartureLocationList = '';
+        for (i = 0; i < departureLocationLength; i++) {
+            let comma = ',';
+            // last element will not have a comma after it
+            if(i === departureLocationLength - 1) {comma = '';}
+            sqldepartureLocationList = sqldepartureLocationList + db.escape(departureLocationArray[i]) + comma;
+        }
+        departureLocationFilter = ' AND departure IN (' + sqldepartureLocationList + ')';
+    }
+
     let sqlQuery = 'SELECT flight, seat_row, seat, class, reserver, price, reservation_timeout, booking_id, departure, destination, departure_date, arrival_date, flight_number FROM tbl_tickets AS t LEFT JOIN tbl_flights AS f ON t.flight = f.id WHERE reserver IS NULL' + classFilter +
-        seatFilter + departureDateFilter + arrivalDateFilter + ';';
+        seatFilter + departureDateFilter + arrivalDateFilter + departureLocationFilter + ';';
 
     if(process.env.NODE_ENV === 'test') {
         // Please look at the README for debugging to the console

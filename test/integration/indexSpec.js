@@ -179,4 +179,44 @@ describe('All with queries', () => {
             });
         });
     });
+    /*
+    * Test the /GET route with departure_location filter
+    */
+    describe('/GET all with departure_location query parameters', () => {
+        it('should GET a list of "TWS" departure location tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_location: 'TWS'}) // /?departure_location=TWS
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(6);
+                done();
+            });
+        });
+
+        it('should GET a list of "TWS" and "DSA" departure location tickets', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_location: 'TWS,DSA'}) // /?departure_location=TWS,DSA
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(14);
+                done();
+            });
+        });
+
+        it('should GET nothing because the input is incorrect (TODO: change this so it returns 400 for bad request', (done) => {
+            chai.request(server)
+                .get('/')
+                .query({departure_location: 'Nothing'}) // /?departure_location=Nothing
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(0);
+                done();
+            });
+        });
+    });
 });
