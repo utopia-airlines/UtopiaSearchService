@@ -44,8 +44,24 @@ exports.getAll = function(filter, cb) {
         ' AND ' + departureDateBefore;
     }
 
+    let arrivalDateFilter = '';
+    let arrivalDateAfter = '\'0000-00-00 00:00:00\'';
+    let arrivalDateBefore = '\'9999-12-31 23:59:59\'';
+    if(filter.arrivalDateAfter) {
+        arrivalDateAfter = db.escape(filter.arrivalDateAfter);
+    }
+
+    if(filter.arrivalDateBefore) {
+        arrivalDateBefore = db.escape(filter.arrivalDateBefore);
+    }
+
+    if(filter.arrivalDateAfter || filter.arrivalDateBefore) {
+        arrivalDateFilter = ' AND arrival_date BETWEEN ' + arrivalDateAfter +
+        ' AND ' + arrivalDateBefore;
+    }
+
     let sqlQuery = 'SELECT flight, seat_row, seat, class, reserver, price, reservation_timeout, booking_id, departure, destination, departure_date, arrival_date, flight_number FROM tbl_tickets AS t LEFT JOIN tbl_flights AS f ON t.flight = f.id WHERE reserver IS NULL' + classFilter +
-        seatFilter + departureDateFilter + ';';
+        seatFilter + departureDateFilter + arrivalDateFilter + ';';
 
     if(process.env.NODE_ENV === 'test') {
         // Please look at the README for debugging to the console
