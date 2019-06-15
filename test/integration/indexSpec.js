@@ -1,7 +1,7 @@
 // custom modules
 const db = require('../../dao/db');
 let server = require('../../index');
-const sqliteUtil = require('../../resource/SQLiteDB');
+const sqliteUtil = require('../util/SQLiteDB');
 
 //Require the dev-dependencies
 let chai = require('chai');
