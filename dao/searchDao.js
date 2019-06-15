@@ -1,12 +1,11 @@
 const db = require('./db');
+const classFilterFunction = require('../util/classFilter');
 let sqliteDatabase;
 if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3');}
 
 exports.getAll = function(filter, cb) {
-    let classFilter = '';
-    if(filter.class) {
-        classFilter = ' AND class = ' + db.escape(filter.class);
-    }
+    // get class filter
+    const classFilter = classFilterFunction.classFilter(filter.class, db);
 
     // filter to be used on sql query
     let seatFilter = '';
