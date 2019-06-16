@@ -5,4 +5,4 @@ module.exports.classFilter = (classNum, db) => {
         classFilter = ' AND class = ' + db.escape(classNum);
     }
     return classFilter;
-}
+};

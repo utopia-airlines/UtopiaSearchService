@@ -12,4 +12,4 @@ module.exports.arrivalDateFilter = (arrivalDateAfter, arrivalDateBefore, db) => 
         arrivalDateFilter = ' AND arrival_date BETWEEN ' + arrivalDateAfter + ' AND ' + arrivalDateBefore;
     }
     return arrivalDateFilter;
-}
+};

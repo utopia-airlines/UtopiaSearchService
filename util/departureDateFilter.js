@@ -13,4 +13,4 @@ module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, d
         departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter + ' AND ' + departureDateBefore;
     }
     return departureDateFilter;
-}
+};
