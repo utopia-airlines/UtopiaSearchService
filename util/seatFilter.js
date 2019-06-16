@@ -20,4 +20,4 @@ module.exports.seatFilter = (seat, db) => {
         seatFilter = ' AND seat IN (' + sqlSeatList + ')';
     }
     return seatFilter;
-}
+};
