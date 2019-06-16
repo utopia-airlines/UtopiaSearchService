@@ -4,6 +4,7 @@ const seatFilterFunction = require('../util/seatFilter');
 const departureDateFunction = require('../util/departureDateFilter');
 const arrivalDateFunction = require('../util/arrivalDateFilter');
 const departureLocationFunction = require('../util/departureLocationFilter');
+const destinationLocationFunction = require('../util/destinationLocationFilter');
 
 let sqliteDatabase;
 if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3');}
@@ -19,26 +20,8 @@ exports.getAll = function(filter, cb) {
     const arrivalDateFilter = arrivalDateFunction.arrivalDateFilter(filter.arrivalDateAfter, filter.arrivalDateBefore, db);
     // get departure location filter
     const departureLocationFilter = departureLocationFunction.departureLocationFilter(filter.departure_location, db);
-
-    // filter to be used on sql query
-    let destinationLocationFilter = '';
-    let destinationLocationArray = null;
-    // still in string form after getting passed as a query parameter
-    // if there is something the destination_location object
-    if(filter.destination_location) {destinationLocationArray = filter.destination_location.split(',');}
-
-    if(Array.isArray(destinationLocationArray)) {
-        let i;
-        let destinationLocationLength = destinationLocationArray.length;
-        let sqldestinationLocationList = '';
-        for (i = 0; i < destinationLocationLength; i++) {
-            let comma = ',';
-            // last element will not have a comma after it
-            if(i === destinationLocationLength - 1) {comma = '';}
-            sqldestinationLocationList = sqldestinationLocationList + db.escape(destinationLocationArray[i]) + comma;
-        }
-        destinationLocationFilter = ' AND destination IN (' + sqldestinationLocationList + ')';
-    }
+    // get destination location filter
+    const destinationLocationFilter = destinationLocationFunction.destinationLocationFilter(filter.destination_location, db);
 
     let sqlQuery = 'SELECT flight, seat_row, seat, class, reserver, price, reservation_timeout, booking_id, departure, destination, departure_date, arrival_date, flight_number FROM tbl_tickets AS t LEFT JOIN tbl_flights AS f ON t.flight = f.id WHERE reserver IS NULL' + classFilter +
         seatFilter + departureDateFilter + arrivalDateFilter + departureLocationFilter + destinationLocationFilter + ';';
