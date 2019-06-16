@@ -3,6 +3,7 @@ const classFilterFunction = require('../util/classFilter');
 const seatFilterFunction = require('../util/seatFilter');
 const departureDateFunction = require('../util/departureDateFilter');
 const arrivalDateFunction = require('../util/arrivalDateFilter');
+const departureLocationFunction = require('../util/departureLocationFilter');
 
 let sqliteDatabase;
 if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3');}
@@ -16,26 +17,8 @@ exports.getAll = function(filter, cb) {
     const departureDateFilter = departureDateFunction.departureDateFilter(filter.departureDateAfter, filter.departureDateBefore, db);
     // get arrival date filter
     const arrivalDateFilter = arrivalDateFunction.arrivalDateFilter(filter.arrivalDateAfter, filter.arrivalDateBefore, db);
-
-    // filter to be used on sql query
-    let departureLocationFilter = '';
-    let departureLocationArray = null;
-    // still in string form after getting passed as a query parameter
-    // if there is something the departure_location object
-    if(filter.departure_location) {departureLocationArray = filter.departure_location.split(',');}
-
-    if(Array.isArray(departureLocationArray)) {
-        let i;
-        let departureLocationLength = departureLocationArray.length;
-        let sqldepartureLocationList = '';
-        for (i = 0; i < departureLocationLength; i++) {
-            let comma = ',';
-            // last element will not have a comma after it
-            if(i === departureLocationLength - 1) {comma = '';}
-            sqldepartureLocationList = sqldepartureLocationList + db.escape(departureLocationArray[i]) + comma;
-        }
-        departureLocationFilter = ' AND departure IN (' + sqldepartureLocationList + ')';
-    }
+    // get departure location filter
+    const departureLocationFilter = departureLocationFunction.departureLocationFilter(filter.departure_location, db);
 
     // filter to be used on sql query
     let destinationLocationFilter = '';
