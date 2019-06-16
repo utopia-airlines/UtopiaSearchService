@@ -1,3 +1,4 @@
+const listLocationSQL = require('./listLocationsForSQL');
 // pass in the departure location list and the db connection (which includes the escapte function)
 module.exports.departureLocationFilter = (departureLocation, db) => {
     // filter to be used on sql query
@@ -8,16 +9,8 @@ module.exports.departureLocationFilter = (departureLocation, db) => {
     if(departureLocation) {departureLocationArray = departureLocation.split(',');}
 
     if(Array.isArray(departureLocationArray)) {
-        let i;
-        let departureLocationLength = departureLocationArray.length;
-        let sqldepartureLocationList = '';
-        for (i = 0; i < departureLocationLength; i++) {
-            let comma = ',';
-            // last element will not have a comma after it
-            if(i === departureLocationLength - 1) {comma = '';}
-            sqldepartureLocationList = sqldepartureLocationList + db.escape(departureLocationArray[i]) + comma;
-        }
-        departureLocationFilter = ' AND departure IN (' + sqldepartureLocationList + ')';
+        let sqlDepartureLocationList = listLocationSQL(departureLocationArray, db);
+        departureLocationFilter = ' AND departure IN (' + sqlDepartureLocationList + ')';
     }
     return departureLocationFilter;
 };
