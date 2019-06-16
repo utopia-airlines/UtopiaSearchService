@@ -23,4 +23,4 @@ module.exports.departureLocationFilter = (departureLocation, db) => {
         departureLocationFilter = ' AND departure IN (' + sqldepartureLocationList + ')';
     }
     return departureLocationFilter;
-}
+};

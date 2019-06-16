@@ -15,4 +15,4 @@ module.exports.destinationLocationFilter = (destinationLocation, db) => {
         destinationLocationFilter = ' AND destination IN (' + sqldestinationLocationList + ')';
     }
     return destinationLocationFilter;
-}
+};
