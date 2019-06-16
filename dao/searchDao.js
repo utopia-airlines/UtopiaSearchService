@@ -1,6 +1,8 @@
 const db = require('./db');
 const classFilterFunction = require('../util/classFilter');
 const seatFilterFunction = require('../util/seatFilter');
+const departureDateFunction = require('../util/departureDateFilter');
+
 let sqliteDatabase;
 if(process.env.NODE_ENV === 'test') {sqliteDatabase = require('better-sqlite3');}
 
@@ -9,22 +11,8 @@ exports.getAll = function(filter, cb) {
     const classFilter = classFilterFunction.classFilter(filter.class, db);
     // get seat filter
     const seatFilter = seatFilterFunction.seatFilter(filter.seat, db);
-
-    let departureDateFilter = '';
-    let departureDateAfter = '\'0000-00-00 00:00:00\'';
-    let departureDateBefore = '\'9999-12-31 23:59:59\'';
-    if(filter.departureDateAfter) {
-        departureDateAfter = db.escape(filter.departureDateAfter);
-    }
-
-    if(filter.departureDateBefore) {
-        departureDateBefore = db.escape(filter.departureDateBefore);
-    }
-
-    if(filter.departureDateAfter || filter.departureDateBefore) {
-        departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter +
-        ' AND ' + departureDateBefore;
-    }
+    // get departure date filter
+    const departureDateFilter = departureDateFunction.departureDateFilter(filter.departureDateAfter, filter.departureDateBefore, db);
 
     let arrivalDateFilter = '';
     let arrivalDateAfter = '\'0000-00-00 00:00:00\'';
