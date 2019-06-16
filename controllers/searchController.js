@@ -1,6 +1,6 @@
 const searchDao = require('../dao/searchDao');
 const routes = require('express').Router();
-const logger = require('../util/winstonFactory').createLogger;
+const logger = require('../util/controllerLogger').createLogger;
 
 routes.get('/', function(req, res) {
 
