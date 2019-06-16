@@ -1,4 +1,4 @@
-const listLocationSQL = require('./listLocationsForSQL');
+const listLocationSQL = require('./listForSQL');
 // pass in the departure location list and the db connection (which includes the escapte function)
 module.exports.departureLocationFilter = (departureLocation, db) => {
     // filter to be used on sql query
