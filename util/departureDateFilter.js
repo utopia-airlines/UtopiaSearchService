@@ -3,23 +3,14 @@
 module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, db) => {
     let departureDateFilter = '';
     // if the user wants to leave any time after `departureDateAfter`
-    if(departureDateAfter) {
-        departureDateAfter = db.escape(departureDateAfter);
-    } else {
-        departureDateAfter = '\'0000-00-00 00:00:00\'';
-    }
+    departureDateAfter = departureDateAfter ? db.escape(departureDateAfter) : '\'0000-00-00 00:00:00\'';
     
     // if the user wants to leave anytime before `departureDateBefore`
-    if(departureDateBefore) {
-        departureDateBefore = db.escape(departureDateBefore);
-    } else {
-        departureDateBefore = '\'9999-12-31 23:59:59\'';
-    }
-    
+    departureDateBefore = departureDateBefore ? db.escape(departureDateBefore) : '\'9999-12-31 23:59:59\'';
+
     // create sql query filter
     if(departureDateAfter || departureDateBefore) {
-        departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter +
-        ' AND ' + departureDateBefore;
+        departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter + ' AND ' + departureDateBefore;
     }
     return departureDateFilter;
 }
