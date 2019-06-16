@@ -7,9 +7,6 @@ module.exports.departureLocationFilter = (departureLocation, db) => {
     // if there is something the departure_location object
     if(departureLocation) {departureLocationArray = departureLocation.split(',');}
 
-    // TODO: this should be simplified because it is now in the right formating
-    // which means that we can simply just pass the departureLocation (using the db.escape)
-    // directly into the sql query
     if(Array.isArray(departureLocationArray)) {
         let i;
         let departureLocationLength = departureLocationArray.length;
