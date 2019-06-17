@@ -6,8 +6,7 @@ module.exports.departureLocationFilter = (departureLocation, db) => {
     // if there is something the departure_location object
     if (departureLocation) {
         departureLocationArray = departureLocation.split(',');
-        let sqlDepartureLocationList = listLocationSQL(departureLocationArray, db);
-        return ' AND departure IN (' + sqlDepartureLocationList + ')';
+        return ' AND departure IN (' + listLocationSQL(departureLocationArray, db) + ')';
     } else {
         return '';
     }

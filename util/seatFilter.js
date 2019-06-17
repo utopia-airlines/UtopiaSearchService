@@ -6,8 +6,7 @@ module.exports.seatFilter = (seat, db) => {
     // if there is something the seat object
     if (seat) {
         seatArray = seat.split(',');
-        const sqlSeatList = listLocationSQL(seatArray, db);
-        return ' AND seat IN (' + sqlSeatList + ')';
+        return ' AND seat IN (' + listLocationSQL(seatArray, db) + ')';
     } else {
         return '';
     }
