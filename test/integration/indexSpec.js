@@ -14,7 +14,7 @@ chai.use(chaiHttp);
 describe('All with queries', () => {
     before((done) => {
         sqliteUtil.createSQLiteDatabase(function() {
-            // function indecating that this is function has finished
+            // function indicating that this is function has finished
             done();
         });
     });
