@@ -5,7 +5,7 @@ module.exports.seatFilter = (seat, db) => {
     let seatArray = null;
     // still in string form after getting passed as a query parameter
     // if there is something the seat object
-    if(seat) {
+    if (seat) {
         seatArray = seat.split(',');
         const sqlSeatList = listLocationSQL(seatArray, db);
         seatFilter = ' AND seat IN (' + sqlSeatList + ')';

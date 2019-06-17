@@ -5,7 +5,7 @@ module.exports = (array, db) => {
     let sqlArray = '';
     for (i = 0; i < arrayLength; i++) {
         let comma = ',';
-        if(i === arrayLength - 1) {comma = '';} // last element will not have a comma after it
+        if (i === arrayLength - 1) {comma = '';} // last element will not have a comma after it
         sqlArray = sqlArray + db.escape(array[i]) + comma;
     }
     return sqlArray;

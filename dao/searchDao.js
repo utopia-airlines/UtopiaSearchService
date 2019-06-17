@@ -6,7 +6,7 @@ exports.getAll = function(filter, cb) {
         allFilters.classFilter(filter.class, db) + allFilters.seatFilter(filter.seat, db) +
         allFilters.departureDateFilter(filter.departureDateAfter, filter.departureDateBefore, db) + allFilters.arrivalDateFilter(filter.arrivalDateAfter, filter.arrivalDateBefore, db) +
         allFilters.departureLocationFilter(filter.departure_location, db) + allFilters.destinationLocationFilter(filter.destination_location, db) + ';';
-    if(process.env.NODE_ENV === 'test') {
+    if (process.env.NODE_ENV === 'test') {
         const result = new sqliteDatabase('airlinesTest.db', {memory: true}).prepare(sqlQuery).all(); // Please look at the README for debugging to the console
         cb(null, result);
     } else {
