@@ -3,8 +3,9 @@ const listLocationSQL = require('./listForSQL');
 module.exports.destinationLocationFilter = (destinationLocation, db) => {
     let destinationLocationFilter = ''; // filter to be used on sql query
     let destinationLocationArray = null;
-    if(destinationLocation) {destinationLocationArray = destinationLocation.split(',');} // still in string form after getting passed as a query parameter if there is something the destination_location object
-    if(Array.isArray(destinationLocationArray)) {
+    // still in string form after getting passed as a query parameter if there is something the destination_location object
+    if(destinationLocation) {
+        destinationLocationArray = destinationLocation.split(',');
         let sqlDestinationLocationList = listLocationSQL(destinationLocationArray, db);
         destinationLocationFilter = ' AND destination IN (' + sqlDestinationLocationList + ')';
     }
