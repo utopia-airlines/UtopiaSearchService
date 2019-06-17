@@ -1,5 +1,5 @@
 const listLocationSQL = require('./listForSQL');
-// pass in the seat name list and the db connection (which includes the escapte function)
+// pass in the seat name list and the db connection (which includes the escape function)
 module.exports.seatFilter = (seat, db) => {
     let seatFilter = ''; // filter to be used on sql query
     let seatArray = null;

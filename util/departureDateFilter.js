@@ -1,5 +1,5 @@
 // pass in the departure after a date (optional) and before a date (optional),
-// and the db connection (which includes the escapte function)
+// and the db connection (which includes the escape function)
 module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, db) => {
     let departureDateFilter = '';
     // if the user wants to leave any time after `departureDateAfter`
