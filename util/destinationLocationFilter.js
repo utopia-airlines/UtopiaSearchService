@@ -1,5 +1,5 @@
 const listLocationSQL = require('./listForSQL');
-// pass in the destination location list and the db connection (which includes the escapte function)
+// pass in the destination location list and the db connection (which includes the escape function)
 module.exports.destinationLocationFilter = (destinationLocation, db) => {
     let destinationLocationFilter = ''; // filter to be used on sql query
     let destinationLocationArray = null;

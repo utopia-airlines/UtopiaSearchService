@@ -1,5 +1,5 @@
 // pass in the arrival date after a certain date (optional) and before a certain date (optional),
-// and the db connection (which includes the escapte function)
+// and the db connection (which includes the escape function)
 module.exports.arrivalDateFilter = (arrivalDateAfter, arrivalDateBefore, db) => {
     let arrivalDateFilter = '';
     // if the user wants to arrive anytime after `arrivalDateAfter`
