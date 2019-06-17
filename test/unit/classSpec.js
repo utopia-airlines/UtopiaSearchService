@@ -1,0 +1,20 @@
+const should = require('chai').should();
+const db = require('../../dao/db');
+
+const classFilter = require('../../util/classFilter').classFilter;
+
+describe('class filter file', () => {
+    describe('filtering function', () => {
+        it('should return a string that will filter out tickets with first class', (done) => {
+            let filterObj = classFilter('1', db);
+            filterObj.should.equal(' AND class = \'1\'');
+            done();
+        });
+
+        it('should return a string that will filter out tickets with class j', (done) => {
+            let filterObj = classFilter('j', db);
+            filterObj.should.equal(' AND class = \'j\'');
+            done();
+        });
+    });
+});
