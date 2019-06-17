@@ -3,7 +3,7 @@ const sqliteDatabase = require('better-sqlite3');
 const readline = require('readline');
 const fs = require('fs');
 
-module.exports.createSQLiteDatabase = function(cb) {
+module.exports.createSQLiteDatabase = function(done) {
     // Please look at the README for debugging to the console
     const Testdb = new sqliteDatabase('airlinesTest.db', {memory: true});
     // creates a stream to listen to using a given file
@@ -15,6 +15,6 @@ module.exports.createSQLiteDatabase = function(cb) {
         Testdb.prepare(line).run();
     });
 
-    // call the callback function
-    cb();
+    // let the tests know that the database has finished setting up
+    done();
 };

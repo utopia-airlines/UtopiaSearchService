@@ -13,10 +13,7 @@ chai.use(chaiHttp);
 //Our parent block
 describe('All with queries', () => {
     before((done) => {
-        sqliteUtil.createSQLiteDatabase(function() {
-            // function indicating that this is function has finished
-            done();
-        });
+        sqliteUtil.createSQLiteDatabase(done);
     });
     /*
     * Test the /GET route with class filter
