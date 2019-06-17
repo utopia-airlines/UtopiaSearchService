@@ -1,12 +1,5 @@
 // given an array and 
 module.exports = (array, db) => {
-    let i;
-    let arrayLength = array.length;
-    let sqlArray = '';
-    for (i = 0; i < arrayLength; i++) {
-        let comma = ',';
-        if (i === arrayLength - 1) {comma = '';} // last element will not have a comma after it
-        sqlArray = sqlArray + db.escape(array[i]) + comma;
-    }
-    return sqlArray;
+    // cannot abbreviate to just db.escape because it will throw an error
+    return array.map(item => db.escape(item)).join(',');
 };
