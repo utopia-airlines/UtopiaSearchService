@@ -16,7 +16,7 @@ describe('All with queries', () => {
     before((done) => {
         sqliteUtil.createSQLiteDatabase(done);
     });
-    after(done => {stop(done)});
+    after(stop);
     /*
     * Test the /GET route with class filter
     */
