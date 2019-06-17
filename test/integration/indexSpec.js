@@ -1,6 +1,7 @@
 // custom modules
 const db = require('../../dao/db');
 let server = require('../../index');
+let stop = server.stop;
 const sqliteUtil = require('../util/SQLiteDB');
 
 //Require the dev-dependencies
@@ -15,6 +16,7 @@ describe('All with queries', () => {
     before((done) => {
         sqliteUtil.createSQLiteDatabase(done);
     });
+    after(done => {stop(done)});
     /*
     * Test the /GET route with class filter
     */
