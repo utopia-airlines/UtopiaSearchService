@@ -1,8 +1,8 @@
 // pass in the class number and the db connection (which includes the escape function)
 module.exports.classFilter = (classNum, db) => {
-    let classFilter = '';
     if (classNum) {
-        classFilter = ' AND class = ' + db.escape(classNum);
+        return ' AND class = ' + db.escape(classNum);
+    } else {
+        return '';
     }
-    return classFilter;
 };

@@ -1,7 +1,6 @@
 // pass in the departure after a date (optional) and before a date (optional),
 // and the db connection (which includes the escape function)
 module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, db) => {
-    let departureDateFilter = '';
     // if the user wants to leave any time after `departureDateAfter`
     departureDateAfter = departureDateAfter ? db.escape(departureDateAfter) : '\'0000-00-00 00:00:00\'';
     
@@ -10,7 +9,8 @@ module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, d
 
     // create sql query filter
     if (departureDateAfter || departureDateBefore) {
-        departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter + ' AND ' + departureDateBefore;
+        return ' AND departure_date BETWEEN ' + departureDateAfter + ' AND ' + departureDateBefore;
+    } else {
+        return '';
     }
-    return departureDateFilter;
 };
