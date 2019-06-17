@@ -9,7 +9,7 @@ module.exports.departureDateFilter = (departureDateAfter, departureDateBefore, d
     departureDateBefore = departureDateBefore ? db.escape(departureDateBefore) : '\'9999-12-31 23:59:59\'';
 
     // create sql query filter
-    if(departureDateAfter || departureDateBefore) {
+    if (departureDateAfter || departureDateBefore) {
         departureDateFilter = ' AND departure_date BETWEEN ' + departureDateAfter + ' AND ' + departureDateBefore;
     }
     return departureDateFilter;
