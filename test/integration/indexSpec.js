@@ -1,5 +1,4 @@
 // custom modules
-const db = require('../../dao/db');
 let server = require('../../index');
 let stop = server.stop;
 const sqliteUtil = require('../util/SQLiteDB');
