@@ -1,6 +1,3 @@
-const mysql = require('mysql');
-const config = require('../config');
+const db = (process.env.NODE_ENV === 'test') ? require('../config/query.config.test') : require('../config/query.config.prod');
 
-const connection = mysql.createConnection(config);
-
-module.exports = connection;
+module.exports = db;
