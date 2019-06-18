@@ -1,5 +1,5 @@
 const should = require('chai').should();
-const db = require('../../dao/db');
+const db = require('../../config/db.config.prod');
 
 const departureLocationFilter = require('../../util/departureLocationFilter').departureLocationFilter;
 
