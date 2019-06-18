@@ -1,7 +1,7 @@
 const should = require('chai').should();
-const db = require('../../config/db.config.prod');
+const db = require('../../app/config/db.config.prod');
 
-const arrivalDateFunction = require('../../util/arrivalDateFilter').arrivalDateFilter;
+const arrivalDateFunction = require('../../app/util/arrivalDateFilter').arrivalDateFilter;
 
 describe('arrival date filter file', () => {
     describe('filtering function', () => {
