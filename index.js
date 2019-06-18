@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./controllers/searchController'));
+app.use(require('./app/controllers/searchController'));
 
 let server = app.listen(8080);
 console.log('Server running in port: 8080 ...');

@@ -1,7 +1,7 @@
 const should = require('chai').should();
-const db = require('../../config/db.config.prod');
+const db = require('../../app/config/db.config.prod');
 
-const seatFilter = require('../../util/seatFilter').seatFilter;
+const seatFilter = require('../../app/util/seatFilter').seatFilter;
 
 describe('seat filter file', () => {
     describe('filtering function', () => {

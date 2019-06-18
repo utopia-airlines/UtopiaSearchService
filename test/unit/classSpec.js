@@ -1,7 +1,7 @@
 const should = require('chai').should();
-const db = require('../../config/db.config.prod');
+const db = require('../../app/config/db.config.prod');
 
-const classFilter = require('../../util/classFilter').classFilter;
+const classFilter = require('../../app/util/classFilter').classFilter;
 
 describe('class filter file', () => {
     describe('filtering function', () => {
