@@ -4,7 +4,7 @@ const logger = require('../util/controllerLogger').createLogger;
 
 routes.get('/', function(req, res) {
 
-    searchDao.getAll(req.query, function(error, result) {
+    searchDao.get(req.query, function(error, result) {
         if (error) {
             logger.error(error);
             console.log(error);
