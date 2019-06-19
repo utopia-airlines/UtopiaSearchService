@@ -7,6 +7,6 @@ const query = (sqlQuery, cb) => {
     } catch (error) {
         cb(error, null);
     }
-}
+};
 
 module.exports.query = query;
