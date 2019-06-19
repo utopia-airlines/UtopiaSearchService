@@ -1,3 +1,3 @@
 const db = require('../config/db.config.prod');
 
-module.exports.query = db.query(sqlQuery,cb);
+module.exports.query = db.query;
