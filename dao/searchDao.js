@@ -7,5 +7,5 @@ exports.get = function(filter, cb) {
         allFilters.classFilter(filter.class, db) + allFilters.seatFilter(filter.seat, db) +
         allFilters.departureDateFilter(filter.departureDateAfter, filter.departureDateBefore, db) + allFilters.arrivalDateFilter(filter.arrivalDateAfter, filter.arrivalDateBefore, db) +
         allFilters.departureLocationFilter(filter.departure_location, db) + allFilters.destinationLocationFilter(filter.destination_location, db) + ';';
-        dbConn.query(sqlQuery, cb);
+    dbConn.query(sqlQuery, cb);
 };
