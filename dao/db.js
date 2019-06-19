@@ -1,3 +1,5 @@
-const db = (process.env.NODE_ENV === 'test') ? require('../config/query.config.test') : require('../config/query.config.prod');
-
-module.exports = db;
+if (process.env.NODE_ENV === 'test') {
+    module.exports = require('../config/query.config.test');
+} else {
+    module.exports = require('../config/query.config.prod');
+}

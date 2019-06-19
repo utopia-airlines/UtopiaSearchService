@@ -6,5 +6,6 @@ exports.get = function(filter, cb) {
         allFilters.classFilter(filter.class, db) + allFilters.seatFilter(filter.seat, db) +
         allFilters.departureDateFilter(filter.departureDateAfter, filter.departureDateBefore, db) + allFilters.arrivalDateFilter(filter.arrivalDateAfter, filter.arrivalDateBefore, db) +
         allFilters.departureLocationFilter(filter.departure_location, db) + allFilters.destinationLocationFilter(filter.destination_location, db) + ';';
+        // filter out reserver by default because we want tickets that have not been taken yet
         dbConn.query(sqlQuery, cb);
 };
