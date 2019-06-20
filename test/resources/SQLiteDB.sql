@@ -1,4 +1,4 @@
-CREATE TABLE `tbl_airports` (`code` char(3) NOT NULL,`name` varchar(45) NOT NULL,PRIMARY KEY (`code`),UNIQUE (`code`));
+CREATE TABLE `tbl_airports` (`code` char(4) NOT NULL,`name` varchar(75) NOT NULL,PRIMARY KEY (`code`),UNIQUE (`code`));
 CREATE TABLE `tbl_flights` (`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,`departure` char(3) NOT NULL,`destination` char(3) NOT NULL,`departure_date` TEXT NOT NULL,`arrival_date` TEXT NOT NULL,`flight_number` int(11) NOT NULL,UNIQUE (`id`), FOREIGN KEY (`departure`) REFERENCES `tbl_airports` (`code`), FOREIGN KEY (`destination`) REFERENCES `tbl_airports` (`code`),CONSTRAINT `departure!=destination` CHECK (`departure` != `destination`),CONSTRAINT `departure_date<destination_date` CHECK (`departure_date` < `arrival_date`));
 CREATE UNIQUE INDEX destination_idx ON tbl_flights (destination);
 CREATE UNIQUE INDEX departure_idx ON tbl_flights (departure);
