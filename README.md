@@ -1,5 +1,7 @@
 # Utopia Search Service
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ed4290e1073540aab03821efcfe9b5a8)](https://app.codacy.com/app/al-amine/UtopiaSearchService?utm_source=github.com&utm_medium=referral&utm_content=utopia-airlines/UtopiaSearchService&utm_campaign=Badge_Grade_Settings)
+
 This microservice will be used by our main APIs to handle searching.
 
 ## Setup
