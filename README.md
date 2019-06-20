@@ -36,8 +36,8 @@ be included in a URL by the relevant Internet standards.)
 -   `departureDateBefore`: all tickets that depart before the given day (not inclusive).
 -   `arrivalDateAfter`: arrive on or after the given day
 -   `arrivalDateBefore`: all tickets that arrive before the given day (not inclusive).
--   `departure_location`: list of locations that you desire to depart from
--   `destination_location`: list of desired destinations
+-   `departure_location`: list of given depature locations (in IATA airport code format).
+-   `destination_location`: list of desired destinations (in IATA airport code format).
 
 ## Issues
 
