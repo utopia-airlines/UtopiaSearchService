@@ -14,6 +14,31 @@ Run `npm test`
 to the following object (`{memory: true}`) being passed in as a parameter for new 
 sqliteDatabase() located in `searchDao.js`, AND all `Spec js` files in the test directory.
 
+## Documentation
+
+When making a GET call, you can add query parameters. These are all of the parameters you 
+can add.
+```
+?class=1&seat=A,B&departureDateAfter=2038-01-11&
+departureDateBefore=2038-01-12&
+arrivalDateAfter=2038-01-16&
+arrivalDateBefore=2038-01-21&
+departure_location=TWS,DSA&
+destination_location=FSE,CAR
+```
+All of the query parameters are optional
+-   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class)
+-   `seat`: give a list of seats that you desire (seperated by commas with no spaces)
+-   `departureDateAfter`: all tickets that depart after the given day (I belive it includes
+    the given day).
+-   `departureDateBefore`: all tickets that depart before the given day.
+-   `arrivalDateAfter`: all tickets that arrive after the given day (I belive it includes
+    the given day).
+-   `arrivalDateBefore`: all tickets that arrive before the given day.
+-   `departure_location`: list of locations that you desire to depart from (seperated by 
+    commas with no spaces)
+-   `destination_location`: list of desired destinations (seperated by commas with no spaces)
+
 ## Issues
 
 -   You should not have to run `npm install --verbose`, but if you do you may run into this
