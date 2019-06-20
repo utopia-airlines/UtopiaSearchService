@@ -30,11 +30,11 @@ destination_location=FSE,CAR
 
 All of the query parameters are optional (no spaces should be included because they're not a character that is allowed to 
 be included in a URL by the relevant Internet standards.)
--   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class)
--   `seat`: give a list of seats that you desire
--   `departureDateAfter`: depart on or after the given day
+-   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class).
+-   `seat`: give a list of seats that you desire.
+-   `departureDateAfter`: depart on or after the given day.
 -   `departureDateBefore`: all tickets that depart before the given day (not inclusive).
--   `arrivalDateAfter`: arrive on or after the given day
+-   `arrivalDateAfter`: arrive on or after the given day.
 -   `arrivalDateBefore`: all tickets that arrive before the given day (not inclusive).
 -   `departure_location`: list of given depature locations (in IATA airport code format).
 -   `destination_location`: list of desired destinations (in IATA airport code format).
