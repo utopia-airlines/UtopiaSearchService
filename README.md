@@ -33,9 +33,9 @@ be included in a URL by the relevant Internet standards.)
 -   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class)
 -   `seat`: give a list of seats that you desire
 -   `departureDateAfter`: depart on or after the given day
--   `departureDateBefore`: all tickets that depart before the given day.
+-   `departureDateBefore`: all tickets that depart before the given day (not inclusive).
 -   `arrivalDateAfter`: arrive on or after the given day
--   `arrivalDateBefore`: all tickets that arrive before the given day.
+-   `arrivalDateBefore`: all tickets that arrive before the given day (not inclusive).
 -   `departure_location`: list of locations that you desire to depart from
 -   `destination_location`: list of desired destinations
 
