@@ -18,6 +18,7 @@ sqliteDatabase() located in `searchDao.js`, AND all `Spec js` files in the test 
 
 When making a GET call, you can add query parameters. These are all of the parameters you 
 can add.
+
 ```
 ?class=1&seat=A,B&departureDateAfter=2038-01-11&
 departureDateBefore=2038-01-12&
@@ -26,6 +27,7 @@ arrivalDateBefore=2038-01-21&
 departure_location=TWS,DSA&
 destination_location=FSE,CAR
 ```
+
 All of the query parameters are optional
 -   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class)
 -   `seat`: give a list of seats that you desire (seperated by commas with no spaces)
