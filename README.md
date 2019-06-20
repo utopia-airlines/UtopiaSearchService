@@ -19,7 +19,7 @@ sqliteDatabase() located in `searchDao.js`, AND all `Spec js` files in the test 
 When making a GET call, you can add query parameters. These are all of the parameters you 
 can add.
 
-```
+``` http
 ?class=1&seat=A,B&departureDateAfter=2038-01-11&
 departureDateBefore=2038-01-12&
 arrivalDateAfter=2038-01-16&
