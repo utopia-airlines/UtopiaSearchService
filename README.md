@@ -32,11 +32,9 @@ All of the query parameters are optional (no spaces should be included because t
 be included in a URL by the relevant Internet standards.)
 -   `class`: range between 1st class and eco (represented by numbers, 1 meaning first class)
 -   `seat`: give a list of seats that you desire
--   `departureDateAfter`: all tickets that depart after the given day (I belive it includes
-    the given day).
+-   `departureDateAfter`: depart on or after the given day
 -   `departureDateBefore`: all tickets that depart before the given day.
--   `arrivalDateAfter`: all tickets that arrive after the given day (I belive it includes
-    the given day).
+-   `arrivalDateAfter`: arrive on or after the given day
 -   `arrivalDateBefore`: all tickets that arrive before the given day.
 -   `departure_location`: list of locations that you desire to depart from
 -   `destination_location`: list of desired destinations
