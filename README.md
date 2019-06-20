@@ -45,4 +45,5 @@ be included in a URL by the relevant Internet standards.)
     error with installing `better-sqlite3`. If so, you may need to run this command
     `npm i better-sqlite3 --save-dev` (I am not sure about the dev part)
 -   **Warning**: If your project or this project is facing problems with dependencies, try 
-    `npm audit fix` first please! The reason is because `npm audit` could have you running code that changes your npm config instead of the local `package.json`.
+    `npm audit fix` first please! The reason is because `npm audit` could have you running
+    code that changes your npm config instead of the local `package.json`.
