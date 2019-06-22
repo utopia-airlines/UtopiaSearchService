@@ -20,7 +20,7 @@ let server = app.listen(8080);
 console.log('Server running in port: 8080 ...');
 
 module.exports = server;
-module.exports.stop = async (done) => {
-    await server.close();
+module.exports.stop = (done) => {
+    server.close();
     done();
 };
