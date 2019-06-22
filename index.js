@@ -1,26 +1,19 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const searchController = require('./app/controllers/searchController');
+exports.handler = async (event) => {
+    // if there is nothing in querystring, then just pass an empty obj instead of undefined
+    const filter = (event && event.params && event.params.querystring) ? event.params.querystring : {};
+    console.log('below is the filter');
+    console.log(filter);
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
-
-app.use(require('./app/controllers/searchController'));
-
-app.use(require('./app/controllers/airportDetailsController'));
-
-app.use(require('./app/controllers/flightDetailController'));
-
-app.use(require('./app/controllers/seatDetailsController'));
-
-let server = app.listen(8080);
-console.log('Server running in port: 8080 ...');
-
-module.exports = server;
-module.exports.stop = (done) => {
-    server.close();
-    done();
+  const promise = new Promise(function(resolve, reject) {
+        searchController.get(filter, (err,result) => {
+            if(err) {
+                console.log(err);
+                reject(Error(err));
+            } else {
+                resolve(result);
+            }
+        });
+  });
+  return promise
 };
