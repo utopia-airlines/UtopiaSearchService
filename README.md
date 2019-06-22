@@ -60,3 +60,9 @@ optional:
 -   **Warning**: If your project or this project is facing problems with dependencies, try 
     `npm audit fix` first please! The reason is because `npm audit` could have you running
     code that changes your npm config instead of the local `package.json`.
+
+## Run on lambda
+-   To run this on lambda, you need to put the `app` folder, production `node_modules` 
+    folder, `.env`, `config.js`, `index.js`, `package-lock.json`, and `package.json` into a 
+    folder (**NOTE**, you may not actually need `package-lock.json` or `package.json`).
+-   `cd` into that folder and run `zip -r name-of-zip .`.
