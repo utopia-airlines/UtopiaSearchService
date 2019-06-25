@@ -2,6 +2,8 @@
 
 This microservice will be used by our main APIs to handle searching.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/84944337fb8440c4b6410427f362ab3a)](https://www.codacy.com/app/sozaki19/UtopiaBookingService_2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=utopia-airlines/UtopiaBookingService&amp;utm_campaign=Badge_Grade)
+
 ## Setup
 
 1.  Create a `.env` file in this project's root (copy `.env.default` into the `.env` and then
