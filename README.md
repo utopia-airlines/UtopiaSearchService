@@ -41,6 +41,9 @@ be included in a URL by the relevant Internet standards.)
 -   `departure_location`: list of given depature locations (in IATA airport code format).
 -   `destination_location`: list of desired destinations (in IATA airport code format).
 
+For getting a list of airport details, here are the query parameters, which is *not* optional (this is only for the `get` function on the `airportDetailsDao` DAO)
+-   `airport` : the airport code, which you want the airport details for
+
 ## Issues
 
 -   You should not have to run `npm install --verbose`, but if you do you may run into this
