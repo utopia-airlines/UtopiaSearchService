@@ -10,4 +10,4 @@ exports.get = function(filter, cb) {
 exports.getAll = (cb) => {
     let sqlQuery = 'SELECT departure, destination, departure_date, arrival_date, flight_number FROM tbl_flights;';
     dbConn.query(sqlQuery, cb);
-}
+};
