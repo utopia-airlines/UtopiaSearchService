@@ -47,6 +47,10 @@ For getting a list of airport details, here are the query parameters, which is *
 For getting a list of flight details, here are the query parameters, which is *not* optional:
 -   `flight` : the flight number, which you want the flight details for
 
+For getting a list of seats in a flight, here are the query parameter, which is *not*
+optional:
+-   `flight`: the flight number, which you want the seat details for (seat and row)
+
 ## Issues
 
 -   You should not have to run `npm install --verbose`, but if you do you may run into this
