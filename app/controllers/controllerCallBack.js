@@ -8,4 +8,4 @@ module.exports = (error, result, res, logger) => {
         res.send(result);
         logger.info('Succesfully sent', result);
     }
-}
+};
