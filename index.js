@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 
 app.use(require('./app/controllers/searchController'));
 
+app.use(require('./app/controllers/airportDetailsController'));
+
 let server = app.listen(8080);
 console.log('Server running in port: 8080 ...');
 
