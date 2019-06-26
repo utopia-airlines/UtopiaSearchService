@@ -14,6 +14,8 @@ app.use(require('./app/controllers/airportDetailsController'));
 
 app.use(require('./app/controllers/flightDetailController'));
 
+app.use(require('./app/controllers/seatDetailsController'));
+
 let server = app.listen(8080);
 console.log('Server running in port: 8080 ...');
 
