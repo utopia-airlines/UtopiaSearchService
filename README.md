@@ -66,3 +66,6 @@ optional:
     folder, `.env`, `config.js`, `index.js`, `package-lock.json`, and `package.json` into a 
     folder (**NOTE**, you may not actually need `package-lock.json` or `package.json`).
 -   `cd` into that folder and run `zip -r name-of-zip .`.
+
+## Notes for lambda
+-   Use the same uris for the API gateway as the `express` uris, ***except*** for the root (`/`), which will be turned into `/search` for the API gateway.
