@@ -60,3 +60,11 @@ optional:
 -   **Warning**: If your project or this project is facing problems with dependencies, try 
     `npm audit fix` first please! The reason is because `npm audit` could have you running
     code that changes your npm config instead of the local `package.json`.
+
+## Run on lambda
+-   To run this on lambda, you need to put the `app` folder, production `node_modules` 
+    folder, `.env`, `config.js`, and `index.js` into a folder.
+-   `cd` into that folder and run `zip -r name-of-zip .`.
+
+## Notes for lambda
+-   Use the same uris for the API gateway as the `express` uris, ***except*** for the root (`/`), which will be turned into `/search` for the API gateway.
