@@ -63,8 +63,7 @@ optional:
 
 ## Run on lambda
 -   To run this on lambda, you need to put the `app` folder, production `node_modules` 
-    folder, `.env`, `config.js`, `index.js`, `package-lock.json`, and `package.json` into a 
-    folder (**NOTE**, you may not actually need `package-lock.json` or `package.json`).
+    folder, `.env`, `config.js`, and `index.js` into a folder.
 -   `cd` into that folder and run `zip -r name-of-zip .`.
 
 ## Notes for lambda
