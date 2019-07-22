@@ -14,8 +14,6 @@ function booleanConvertingWrapper(cb) {
                     record[key] = true;
                 } else if (record[key] === 'false') {
                     record[key] = false;
-                } else if (key === 'reserved') {
-                    console.log(record);
                 }
             }
         }
