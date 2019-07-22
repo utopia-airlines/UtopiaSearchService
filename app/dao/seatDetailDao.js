@@ -7,8 +7,8 @@ function booleanConvertingWrapper(cb) {
         if (err) {
             cb(err, result);
         } else {
-            for (record of result) {
-                for (key in record) {
+            for (var record of result) {
+                for (var key in record) {
                     if (record[key] === 'true') {
                         record[key] = true;
                     } else if (record[key] === 'false') {
@@ -20,7 +20,7 @@ function booleanConvertingWrapper(cb) {
             }
             cb(err, result);
         }
-    }
+    };
 }
 
 exports.get = function(filter, cb) {
