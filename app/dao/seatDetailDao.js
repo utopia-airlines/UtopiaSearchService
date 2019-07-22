@@ -6,20 +6,20 @@ function booleanConvertingWrapper(cb) {
     return function(err, result) {
         if (err) {
             cb(err, result);
-        } else {
-            for (var record of result) {
-                for (var key in record) {
-                    if (record[key] === 'true') {
-                        record[key] = true;
-                    } else if (record[key] === 'false') {
-                        record[key] = false;
-                    } else if (key === 'reserved') {
-                        console.log(record);
-                    }
+            return;
+        } 
+        for (var record of result) {
+            for (var key in record) {
+                if (record[key] === 'true') {
+                    record[key] = true;
+                } else if (record[key] === 'false') {
+                    record[key] = false;
+                } else if (key === 'reserved') {
+                    console.log(record);
                 }
             }
-            cb(err, result);
         }
+        cb(err, result);
     };
 }
 
