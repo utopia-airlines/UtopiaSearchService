@@ -9,12 +9,10 @@ function booleanConvertingWrapper(cb) {
             return;
         } 
         for (var record of result) {
-            for (var key in record) {
-                if (record[key] === 'true') {
-                    record[key] = true;
-                } else if (record[key] === 'false') {
-                    record[key] = false;
-                }
+            if (record['reserved'] === 'true') {
+                record['reserved'] = true;
+            } else if (record['reserved'] === 'false') {
+                record['reserved'] = false;
             }
         }
         cb(err, result);
