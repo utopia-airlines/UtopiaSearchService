@@ -16,6 +16,7 @@ describe('All with queries', () => {
         sqliteUtil.createSQLiteDatabase(done);
     });
     after(stop);
+
     /*
     * Test the /GET route with class filter
     */
@@ -55,6 +56,7 @@ describe('All with queries', () => {
             });
         });
     });
+
     /*
     * Test the /GET route with seat filter
     */
@@ -95,6 +97,7 @@ describe('All with queries', () => {
             });
         });
     });
+
     /*
     * Test the /GET route with departure date filter
     */

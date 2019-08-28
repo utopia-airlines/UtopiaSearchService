@@ -7,6 +7,7 @@ describe('airportDetailDao', () => {
     before((done) => {
         sqliteUtil.createSQLiteDatabase(done);
     });
+
     describe('getting aiport details using a airport code', () => {
         it('it should return the details of an airport given CAR', (done) => {
             let filter = {airport: 'CAR'};
@@ -19,6 +20,7 @@ describe('airportDetailDao', () => {
             });
         });
     });
+
     describe('getting all airport details', () => {
         it('it should return details for all airports', (done) => {
             airportDetailDao.getAll((err, result) => {

@@ -7,6 +7,7 @@ describe('flightDetailDao', () => {
     before((done) => {
         sqliteUtil.createSQLiteDatabase(done);
     });
+
     describe('getting flight details using a flight number', () => {
         it('should return the details of flight number 154681', (done) => {
             let filter = {flight: 154681};
@@ -21,6 +22,7 @@ describe('flightDetailDao', () => {
             });
         });
     });
+
     describe('getting all flight details', () => {
         it('should return details for all flights', (done) => {
             flightDetailDao.getAll((err, result) => {
