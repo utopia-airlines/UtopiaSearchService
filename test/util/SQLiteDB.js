@@ -6,7 +6,8 @@ const fs = require('fs');
 module.exports.createSQLiteDatabase = function(done) {
     // Please look at the README for debugging to the console
     const Testdb = new sqliteDatabase('airlinesTest.db', {memory: true});
-    // if the table does not exist, then create the tables. Otherwise, do not create it again
+    // if the table does not exist, then create the tables. Otherwise, do not
+    // create it again
     if(!(Testdb.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name='tbl_airports';`).get())) {
         // creates a stream to listen to using a given file
         const readInterface = readline.createInterface({
