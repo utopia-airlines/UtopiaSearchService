@@ -4,9 +4,7 @@ const sqliteUtil = require('../../util/SQLiteDB');
 const airportDetailDao = require('../../../app/dao/airportDetailDao');
 
 describe('airportDetailDao', () => {
-    before((done) => {
-        sqliteUtil.createSQLiteDatabase(done);
-    });
+    before(sqliteUtil.createSQLiteDatabase);
 
     describe('getting aiport details using a airport code', () => {
         it('it should return the details of an airport given CAR', (done) => {

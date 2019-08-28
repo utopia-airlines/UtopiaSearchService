@@ -12,9 +12,7 @@ let should = chai.should();
 chai.use(chaiHttp);
 //Our parent block
 describe('All with queries', () => {
-    before((done) => {
-        sqliteUtil.createSQLiteDatabase(done);
-    });
+    before(sqliteUtil.createSQLiteDatabase);
     after(stop);
 
     /*

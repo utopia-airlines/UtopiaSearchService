@@ -4,9 +4,7 @@ const sqliteUtil = require('../../util/SQLiteDB');
 const flightDetailDao = require('../../../app/dao/flightDetailDao');
 
 describe('flightDetailDao', () => {
-    before((done) => {
-        sqliteUtil.createSQLiteDatabase(done);
-    });
+    before(sqliteUtil.createSQLiteDatabase);
 
     describe('getting flight details using a flight number', () => {
         it('should return the details of flight number 154681', (done) => {

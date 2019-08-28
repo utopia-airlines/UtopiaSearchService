@@ -4,9 +4,7 @@ const sqliteUtil = require('../../util/SQLiteDB');
 const seatDetailDao = require('../../../app/dao/seatDetailDao');
 
 describe('seatDetailDao', () => {
-    before((done) => {
-        sqliteUtil.createSQLiteDatabase(done);
-    });
+    before(sqliteUtil.createSQLiteDatabase);
 
     describe('getting seat details using a flight number', () => {
         it('it should return a list of 9 seat details given 154681', (done) => {
