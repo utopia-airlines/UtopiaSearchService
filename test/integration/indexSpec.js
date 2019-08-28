@@ -99,7 +99,7 @@ describe('All with queries', () => {
     * Test the /GET route with departure date filter
     */
     describe('/GET all with departure date query parameters', () => {
-        it('should GET a list tickets with departure date between 2038-01-11 00:00:00 and 2038-01-12 00:00:00', (done) => {
+        it('should GET a list of tickets departing between 2038-01-11 and 2038-01-12', (done) => {
             chai.request(server)
                 .get('/')
                 .query({departureDateAfter: '2038-01-11 00:00:00',
@@ -112,7 +112,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list tickets with departure date between a non given datetime and 2038-01-12 00:00:00', (done) => {
+        it('should GET a list of tickets departing before 2038-01-12', (done) => {
             chai.request(server)
                 .get('/')
                 .query({departureDateBefore: '2038-01-12 00:00:00'}) // /?departureDateBefore=2038-01-12 00:00:00
@@ -124,7 +124,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list tickets with departure date between 2038-01-11 00:00:00 and a non given datetime', (done) => {
+        it('should GET a list of tickets departing on or after 2038-01-11', (done) => {
             chai.request(server)
                 .get('/')
                 .query({departureDateAfter: '2038-01-11 00:00:00'}) // /?departureDateAfter=2038-01-11 00:00:00
@@ -136,11 +136,12 @@ describe('All with queries', () => {
             });
         });
     });
+
     /*
     * Test the /GET route with arrival date filter
     */
     describe('/GET all with arrival date query parameters', () => {
-        it('should GET a list tickets with arrival date between 2038-01-16 00:00:00 and 2038-01-21 00:00:00', (done) => {
+        it('should GET a list of tickets arriving between 2038-01-16 and 2038-01-21', (done) => {
             chai.request(server)
                 .get('/')
                 .query({arrivalDateAfter: '2038-01-16 00:00:00',
@@ -153,7 +154,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list tickets with arrival date between a non given datetime and 2038-01-16 00:00:00', (done) => {
+        it('should GET a list of tickets arriving before 2038-01-16', (done) => {
             chai.request(server)
                 .get('/')
                 .query({arrivalDateBefore: '2038-01-16 00:00:00'}) // /?arrivalDateBefore=2038-01-16
@@ -165,7 +166,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list tickets with arrival date between 2038-01-16 00:00:00 and a non given datetime', (done) => {
+        it('should GET a list of tickets arriving on or after 2038-01-16', (done) => {
             chai.request(server)
                 .get('/')
                 .query({arrivalDateAfter: '2038-01-16 00:00:00'}) // /?arrivalDateAfter=2038-01-16
@@ -177,11 +178,12 @@ describe('All with queries', () => {
             });
         });
     });
+
     /*
     * Test the /GET route with departure_location filter
     */
     describe('/GET all with departure_location query parameters', () => {
-        it('should GET a list of "TWS" departure location tickets', (done) => {
+        it('should GET a list of tickets departing "TWS"', (done) => {
             chai.request(server)
                 .get('/')
                 .query({departure_location: 'TWS'}) // /?departure_location=TWS
@@ -193,7 +195,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list of "TWS" and "DSA" departure location tickets', (done) => {
+        it('should GET a list of tickets departing "TWS" and "DSA"', (done) => {
             chai.request(server)
                 .get('/')
                 .query({departure_location: 'TWS,DSA'}) // /?departure_location=TWS,DSA
@@ -217,11 +219,12 @@ describe('All with queries', () => {
             });
         });
     });
+
     /*
     * Test the /GET route with destination_location filter
     */
     describe('/GET all with destination_location query parameters', () => {
-        it('should GET a list of "FSE" departure location tickets', (done) => {
+        it('should GET a list of tickets arriving at "FSE"', (done) => {
             chai.request(server)
                 .get('/')
                 .query({destination_location: 'FSE'}) // /?destination_location=FSE
@@ -233,7 +236,7 @@ describe('All with queries', () => {
             });
         });
 
-        it('should GET a list of "FSE" and "CAR" departure location tickets', (done) => {
+        it('should GET a list of tickets arriving at "FSE" and "CAR"', (done) => {
             chai.request(server)
                 .get('/')
                 .query({destination_location: 'FSE,CAR'}) // /?destination_location=FSE,CAR
