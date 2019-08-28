@@ -9,7 +9,7 @@ module.exports.departureDateFilter = (departingAfterParam, departingBeforeParam,
 
     // create sql query filter
     if (departingAfterParam || departingBeforeParam) {
-        return ' AND departure_date BETWEEN ' + departingAfter + ' AND ' + departingBefore;
+        return ` AND departure_date BETWEEN ${departingAfter} AND ${departingBefore}`;
     } else {
         return '';
     }

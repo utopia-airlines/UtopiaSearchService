@@ -8,7 +8,7 @@ module.exports.arrivalDateFilter = (arrivalDateAfterParam, arrivalDateBeforePara
     let arrivalDateBefore = arrivalDateBeforeParam ? db.escape(arrivalDateBeforeParam) : '\'9999-12-31 23:59:59\'';
 
     if (arrivalDateAfterParam || arrivalDateBeforeParam) {
-        return ' AND arrival_date BETWEEN ' + arrivalDateAfter + ' AND ' + arrivalDateBefore;
+        return ` AND arrival_date BETWEEN ${arrivalDateAfter} AND ${arrivalDateBefore}`;
     } else {
         return '';
     }

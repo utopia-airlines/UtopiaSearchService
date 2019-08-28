@@ -5,7 +5,7 @@ module.exports.destinationLocationFilter = (destinationLocation, db) => {
     // still in string form after getting passed as a query parameter if there is something the destination_location object
     if (destinationLocation) {
         destinationLocationArray = destinationLocation.split(',');
-        return ' AND destination IN (' + listLocationSQL(destinationLocationArray, db) + ')';
+        return ` AND destination IN (${listLocationSQL(destinationLocationArray, db)})`;
     } else {
         return '';
     }
