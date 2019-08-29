@@ -2,6 +2,12 @@ const flightNumberFilter = require('../util/flight_numberFilter');
 const dbConn = require('./db');
 const db = require('../config/db.config.prod');
 
+function deleteMultiple(obj, ...names) {
+    for (var name of names) {
+        delete obj[name];
+    }
+}
+
 function nestAirportsWrapper(cb) {
     return function(err, result) {
         if (err) {
@@ -17,10 +23,8 @@ function nestAirportsWrapper(cb) {
                 code: record.destination_code,
                 name: record.destination_name
             };
-            delete record.departure_code;
-            delete record.departure_name;
-            delete record.destination_code;
-            delete record.destination_name;
+            deleteMultiple(record, 'departure_code', 'departure_name',
+                'destination_code', 'destination_name');
         }
         cb(err, result);
     };
