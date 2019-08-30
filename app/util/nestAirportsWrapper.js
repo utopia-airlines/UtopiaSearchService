@@ -1,21 +1,21 @@
 const deleteMultiple = require('./deleteMultiple');
 
+function helper(obj, key) {
+    obj[key] = {
+        code: obj[key + '_code'],
+        name: obj[key + '_name']
+    };
+    deleteMultiple(obj, key + '_code', key + '_name');
+}
+
 module.exports = (cb) => function(err, result) {
     if (err) {
         cb(err, result);
         return;
     }
     for (var record of result) {
-        record.departure = {
-            code: record.departure_code,
-            name: record.departure_name
-        };
-        record.destination = {
-            code: record.destination_code,
-            name: record.destination_name
-        };
-        deleteMultiple(record, 'departure_code', 'departure_name',
-            'destination_code', 'destination_name');
+        helper(record, 'departure');
+        helper(record, 'destination');
     }
     cb(err, result);
 };
