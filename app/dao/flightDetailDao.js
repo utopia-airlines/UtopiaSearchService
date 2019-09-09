@@ -12,7 +12,7 @@ const baseQuery = `SELECT departure_airport.code AS departure_code,
                     LEFT JOIN tbl_airports departure_airport
                         ON tbl_flights.departure = departure_airport.code
                     LEFT JOIN tbl_airports destination_airport
-                        ON tbl_flights.destination = destination_airport.code`
+                        ON tbl_flights.destination = destination_airport.code`;
 
 exports.get = function(filter, cb) {
     let sqlQuery = `${baseQuery}
