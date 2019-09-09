@@ -3,6 +3,7 @@ const dbConn = require('./db');
 const db = require('../config/db.config.prod');
 const nestAirportsWrapper = require('../util/nestAirportsWrapper');
 const nestFlightWrapper = require('../util/nestFlightWrapper');
+const seatFields = require('./seatFields');
 
 function booleanConvertingWrapper(cb) {
     return function(err, result) {
@@ -22,12 +23,7 @@ function booleanConvertingWrapper(cb) {
 }
 
 exports.get = function(filter, cb) {
-    let sqlQuery = `SELECT seat_row, seat, class,
-                        departure_airport.code AS departure_code,
-                        departure_airport.name AS departure_name,
-                        destination_airport.code AS destination_code,
-                        destination_airport.name AS destination_name,
-                        departure_date, arrival_date, flight_number,
+    let sqlQuery = `SELECT ${seatFields},
                         CASE WHEN reserver IS NULL THEN 'false' ELSE 'true' END
                             AS reserved
                         FROM tbl_tickets AS t
