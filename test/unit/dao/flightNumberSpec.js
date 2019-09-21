@@ -12,8 +12,10 @@ describe('flightDetailDao', () => {
             flightDetailDao.get(filter, (err, result) => {
                 result.length.should.equal(1);
                 let firstEntry = result[0];
-                firstEntry.departure.should.equal('DSA');
-                firstEntry.destination.should.equal('FSE');
+                firstEntry.departure.code.should.equal('DSA');
+                firstEntry.departure.name.should.equal('test');
+                firstEntry.destination.code.should.equal('FSE');
+                firstEntry.destination.name.should.equal('test2');
                 firstEntry.departure_date.should.equal('2038-01-19 03:14:07');
                 firstEntry.arrival_date.should.equal('2038-01-20 03:14:07');
                 done();
