@@ -11,8 +11,8 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/register": "^7.6.0",
+    "@babel/core": "^7.6.2",
+    "@babel/register": "^7.6.2",
     "better-sqlite3": "^5.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
