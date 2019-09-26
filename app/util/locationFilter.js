@@ -1,4 +1,4 @@
-const listLocationSQL = require('./listForSQL')
+const listLocationSQL = require('./listForSQL');
 
 // Given a field to filter by location code ('destination' or 'departure'),
 // produces a function that, given a list of location codes and the database
