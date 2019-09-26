@@ -1,15 +1,13 @@
 const classFilterFunction = require('../util/classFilter');
 const seatFilterFunction = require('../util/seatFilter');
-const departureDateFunction = require('../util/departureDateFilter');
-const arrivalDateFunction = require('../util/arrivalDateFilter');
-const departureLocationFunction = require('../util/departureLocationFilter');
-const destinationLocationFunction = require('../util/destinationLocationFilter');
+const dateFilterFunction = require('../util/dateFilter');
+const locationFilterFunction = require('../util/locationFilter');
 
 module.exports = { // this will contain every filter function
     classFilter: classFilterFunction.classFilter, // get class filter
     seatFilter: seatFilterFunction.seatFilter, // get seat filter
-    departureDateFilter: departureDateFunction.departureDateFilter, // get departure date filter
-    arrivalDateFilter: arrivalDateFunction.arrivalDateFilter, // get arrival date filter
-    departureLocationFilter: departureLocationFunction.departureLocationFilter, // get departure location filter
-    destinationLocationFilter: destinationLocationFunction.destinationLocationFilter // get destination location filter
+    departureDateFilter: dateFilterFunction.dateFilter('departure_date'), // get departure date filter
+    arrivalDateFilter: dateFilterFunction.dateFilter('arrival_date'), // get arrival date filter
+    departureLocationFilter: locationFilterFunction.locationFilter('departure'), // get departure location filter
+    destinationLocationFilter: locationFilterFunction.locationFilter('destination') // get destination location filter
 };

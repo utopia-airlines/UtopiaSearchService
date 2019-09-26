@@ -1,4 +1,4 @@
-const flightNumberFilter = require('../util/flight_numberFilter');
+const flightNumberFilter = require('../util/flightNumberFilter');
 const dbConn = require('./db');
 const db = require('../config/db.config.prod');
 const nestAirportsWrapper = require('../util/nestAirportsWrapper');

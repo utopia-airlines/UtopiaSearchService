@@ -1,7 +1,7 @@
 const should = require('chai').should();
 const db = require('../../app/config/db.config.prod');
 
-const destinationLocationFilter = require('../../app/util/destinationLocationFilter').destinationLocationFilter;
+const destinationLocationFilter = require('../../app/util/locationFilter').locationFilter('destination');
 
 describe('destination location filter file', () => {
     describe('filtering function', () => {
