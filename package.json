@@ -4,7 +4,7 @@
   "description": "Run a variety of queries on a given database",
   "main": "index.js",
   "dependencies": {
-    "mysql": "^2.17.1",
+    "mysql": "^2.18.0",
     "express": "^4.17.1",
     "body-parser": "^1.18.2",
     "dotenv": "^8.1.0",
